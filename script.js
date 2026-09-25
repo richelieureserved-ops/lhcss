@@ -28,15 +28,35 @@ const clubCategories = {
 };
 const clubsByName = new Map([...clubsGrid.children].map(club => [club.querySelector('h3').textContent, club]));
 clubsGrid.innerHTML = '';
+const clubFilterBar = document.createElement('div');
+clubFilterBar.className = 'club-filters';
+clubFilterBar.setAttribute('aria-label', 'Filter clubs by category');
+clubFilterBar.innerHTML = '<button class="club-filter is-selected" type="button" data-filter="all">All clubs</button>';
 Object.entries(clubCategories).forEach(([category, names]) => {
+  const filter = document.createElement('button');
+  filter.className = 'club-filter';
+  filter.type = 'button';
+  filter.dataset.filter = category;
+  filter.textContent = category;
+  clubFilterBar.appendChild(filter);
   const group = document.createElement('div');
   group.className = 'club-category';
+  group.dataset.category = category;
   group.innerHTML = `<h3>${category}</h3><div class="category-clubs"></div>`;
   const categoryClubs = group.querySelector('.category-clubs');
   names.forEach(name => {
     if (clubsByName.has(name)) categoryClubs.appendChild(clubsByName.get(name));
   });
   clubsGrid.appendChild(group);
+});
+clubsGrid.before(clubFilterBar);
+clubFilterBar.addEventListener('click', event => {
+  const filter = event.target.closest('.club-filter');
+  if (!filter) return;
+  clubFilterBar.querySelectorAll('.club-filter').forEach(button => button.classList.toggle('is-selected', button === filter));
+  clubsGrid.querySelectorAll('.club-category').forEach(group => {
+    group.hidden = filter.dataset.filter !== 'all' && group.dataset.category !== filter.dataset.filter;
+  });
 });
 const houseNames = ['Jesse', 'Ellis', 'Bourne', 'Leon'];
 document.querySelectorAll('#school-activities .house p').forEach((label, index) => {
@@ -108,3 +128,30 @@ if (activities) {
     if (event.target === lightbox) closeLightbox();
   });
 }
+const navLinks = [...document.querySelectorAll('.nav-links a')];
+const navSections = navLinks.map(link => document.querySelector(link.hash)).filter(Boolean);
+const navObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    navLinks.forEach(link => link.classList.toggle('is-active', link.hash === `#${entry.target.id}`));
+  });
+}, { rootMargin: '-25% 0px -65% 0px' });
+navSections.forEach(section => navObserver.observe(section));
+const contact = document.querySelector('#contact .contact');
+if (contact) {
+  const map = document.createElement('iframe');
+  map.className = 'map-frame';
+  map.title = 'Map showing Leon Hess Comprehensive Secondary School';
+  map.loading = 'lazy';
+  map.src = 'https://www.google.com/maps?q=Leon+Hess+Comprehensive+Secondary+School+Saint+Lucia&output=embed';
+  contact.appendChild(map);
+}
+const backToTop = document.createElement('a');
+backToTop.className = 'back-to-top';
+backToTop.href = '#top';
+backToTop.setAttribute('aria-label', 'Back to top');
+backToTop.textContent = '↑';
+document.body.appendChild(backToTop);
+const updateBackToTop = () => backToTop.classList.toggle('is-visible', window.scrollY > 500);
+window.addEventListener('scroll', updateBackToTop, { passive: true });
+updateBackToTop();
