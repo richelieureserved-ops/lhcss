@@ -58,9 +58,9 @@ const useLocalGallery = (gallery, photos) => {
 useLocalGallery(anniversaryGallery, anniversaryPhotos);
 const kweyolGallery = document.querySelector('#school-activities .event-card:nth-child(2) .photo-strip');
 const kweyolPhotos = [
-  ['assets/sports-day-1.jpg', 'Student performing at the Jounen Kweyol celebration'],
-  ['assets/sports-day-2.jpg', 'Student musician performing at the Jounen Kweyol celebration'],
-  ['assets/sports-day-3.jpg', 'Student dancer performing at the Jounen Kweyol celebration']
+  ['assets/kweyol-new-1.jpg', 'Students performing at the Jounen Kweyol celebration'],
+  ['assets/kweyol-new-2.jpg', 'Student taking part in the Jounen Kweyol celebration'],
+  ['assets/kweyol-new-3.jpg', 'Student dancing at the Jounen Kweyol celebration']
 ];
 useLocalGallery(kweyolGallery, kweyolPhotos);
 const sportsDayGallery = document.querySelector('#school-activities .event-card:nth-child(3) .photo-strip');
