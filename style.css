@@ -15,7 +15,7 @@ nav a { text-decoration:none; }
 .kicker { margin:0 0 16px; color:#bde0ca; font:700 12px 'Trebuchet MS', sans-serif; letter-spacing:.2em; text-transform:uppercase; }
 h1 { max-width:720px; margin:0; font-size:clamp(45px,7vw,92px); font-weight:400; line-height:.92; letter-spacing:-.06em; }
 .hero p { max-width:520px; margin:28px 0 0; color:#d9e8e8; font-size:19px; line-height:1.5; }
-.hero-photo { min-height:330px; border:10px solid rgba(255,255,255,.3); background:var(--deep-green) url('assets/leon hess school.jpg') center/cover no-repeat; box-shadow:25px 25px 0 #bde0ca; }
+.hero-photo { min-height:330px; border:10px solid rgba(255,255,255,.3); border-radius:8px; background:var(--deep-green) url('assets/leon hess school.jpg') center/cover no-repeat; box-shadow:18px 18px 0 #bde0ca, 0 16px 30px rgba(13,61,44,.2); }
 main { display:flex; width:min(1180px,88vw); flex-direction:column; margin:-38px auto 80px; }
 #school-activities { order:4; }
 #past-students { display:none; }
@@ -27,10 +27,10 @@ main { display:flex; width:min(1180px,88vw); flex-direction:column; margin:-38px
 .quick strong { display:block; color:#ffffff; font-size:27px; font-weight:400; }
 .quick span { display:block; margin-top:5px; color:var(--muted); font:11px 'Trebuchet MS', sans-serif; letter-spacing:.08em; text-transform:uppercase; }
 section { padding-top:90px; }
-.section-label { display:flex; align-items:center; gap:14px; margin-bottom:15px; color:#ffffff; font:700 11px 'Trebuchet MS', sans-serif; letter-spacing:.16em; text-transform:uppercase; }
+.section-label { display:flex; align-items:center; gap:14px; margin-bottom:15px; color:#eafff2; font:700 11px 'Trebuchet MS', sans-serif; letter-spacing:.16em; text-transform:uppercase; }
 .section-label:after { display:block; width:60px; height:1px; background:#ffffff; content:''; }
 h2 { max-width:750px; margin:0 0 22px; font-size:clamp(34px,5vw,59px); font-weight:400; line-height:1; letter-spacing:-.045em; }
-.lead { max-width:700px; color:var(--muted); font-size:18px; line-height:1.6; }
+.lead { max-width:700px; color:#edf9f1; font-size:18px; line-height:1.6; }
 .two-col { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
 .panel { padding:30px; border:1px solid var(--line); background:linear-gradient(180deg, var(--green) 0%, var(--deep-green) 100%); box-shadow:0 8px 24px rgba(13,61,44,.04); }
 .panel h3 { margin:0 0 19px; font-size:25px; font-weight:400; }
@@ -38,7 +38,10 @@ h2 { max-width:750px; margin:0 0 22px; font-size:clamp(34px,5vw,59px); font-weig
 .panel ul { margin:0; padding-left:20px; columns:2; }
 .operation-grid, .clubs-grid, .event-grid { display:grid; gap:15px; }
 .operation-grid { grid-template-columns:repeat(3,1fr); }
-.clubs-grid { grid-template-columns:repeat(4,1fr); }
+.clubs-grid { grid-template-columns:repeat(2,1fr); }
+.club-category { padding:22px; border:1px solid var(--line); background:rgba(13,61,44,.3); }
+.club-category > h3 { margin:0 0 15px; color:#ffffff; font-size:24px; font-weight:400; }
+.category-clubs { display:grid; gap:12px; grid-template-columns:repeat(2,1fr); }
 .club { padding:20px; border-top:3px solid var(--green); background:var(--pale-green); }
 .club h3 { margin:0 0 8px; font-size:19px; font-weight:400; }
 .club p { margin:0; color:var(--muted); font:13px/1.5 'Trebuchet MS', sans-serif; }
@@ -102,6 +105,12 @@ h2 { max-width:750px; margin:0 0 22px; font-size:clamp(34px,5vw,59px); font-weig
 .form-card h3 { margin:0; font-size:24px; font-weight:400; }
 .form-card p { color:var(--muted); font:13px/1.5 'Trebuchet MS', sans-serif; }
 .button { display:inline-block; width:max-content; padding:11px 15px; color:white; background:var(--green); font:700 11px 'Trebuchet MS', sans-serif; letter-spacing:.08em; text-decoration:none; text-transform:uppercase; }
+.button { border:1px solid #bde0ca; cursor:pointer; transition:background .2s ease, transform .2s ease; }
+.button:hover, .button:focus-visible { background:var(--deep-green); transform:translateY(-2px); }
+.academic-details { margin-top:22px; border-top:1px solid var(--line); }
+.academic-details details { padding:14px 0; border-bottom:1px solid var(--line); }
+.academic-details summary { cursor:pointer; color:#ffffff; font:700 13px 'Trebuchet MS', sans-serif; }
+.academic-details p { margin:10px 0 0; }
 .gallery { display:grid; grid-template-columns:1.2fr .8fr .8fr; grid-template-rows:220px 180px; gap:12px; }
 .gallery figure { position:relative; overflow:hidden; margin:0; background:#a9c2c4; }
 .gallery figure:first-child { grid-row:span 2; }
@@ -116,4 +125,12 @@ figcaption { position:absolute; right:0; bottom:0; left:0; padding:12px; color:w
 .sources { margin-top:40px; padding-top:20px; border-top:1px solid var(--line); color:var(--muted); font:12px/1.7 'Trebuchet MS', sans-serif; }
 footer { padding:35px 6vw; color:#d8eee3; background:var(--deep-green); font:700 12px 'Trebuchet MS', sans-serif; text-transform:uppercase; }
 footer a { color:#bde0ca; cursor:pointer; text-decoration:underline; }
+.footer-contact { margin:0 18px; }
+.gallery-lightbox { width:min(92vw,1000px); max-width:none; padding:18px; border:1px solid var(--line); color:var(--ink); background:var(--deep-green); }
+.gallery-lightbox::backdrop { background:rgba(4,24,17,.82); }
+.gallery-lightbox img { display:block; width:100%; max-height:78vh; object-fit:contain; }
+.lightbox-close { display:block; margin:0 0 12px auto; padding:8px 12px; border:1px solid #bde0ca; color:white; background:transparent; cursor:pointer; }
+.lightbox-close:hover, .lightbox-close:focus-visible { background:var(--green); }
 @media (max-width:800px) { .nav-links { display:none; } .hero, .two-col, .contact, .operation-grid, .event-grid { grid-template-columns:1fr; } .hero-photo { min-height:250px; } .quick { grid-template-columns:repeat(2,1fr); } .quick div:nth-child(2) { border-right:0; } .quick div:nth-child(-n+2) { border-bottom:1px solid var(--line); } .facts, .form-grid, .clubs-grid, .activity-houses, .past-students { grid-template-columns:1fr; } .principal-profile { grid-template-columns:1fr; } .principal-profile img { height:260px; } .gallery { grid-template-columns:1fr 1fr; grid-template-rows:210px 150px; } .gallery figure:first-child { grid-column:span 2; grid-row:span 1; } .panel ul { columns:1; } .event-card, .panel, .contact-card { border-radius:12px; } }
+@media (max-width:800px) { .category-clubs { grid-template-columns:1fr; } .footer-contact { display:block; margin:10px 0; } }
+@media (max-width:480px) { .quick { grid-template-columns:1fr; } .quick div { border-right:0; border-bottom:1px solid var(--line); } .quick div:last-child { border-bottom:0; } }
